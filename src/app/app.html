@@ -1,13 +1,13 @@
 <div cdkDropListGroup>
 <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  @for (movie of movies; track movie;) {
+  @for (catg of menu; track catg; let idx = $index) {
     <div class="example-box" cdkDrag>
-      {{movie.name}}
+      {{catg.Category}}
 
-      <div cdkDropList class="example-list" (cdkDropListDropped)="drop2($event, movie.uId)">
-        @for (children of movie.children; track children) {
+      <div cdkDropList class="example-list" (cdkDropListDropped)="drop2($event, idx)">
+        @for (Items of catg.Items; track Items) {
           <div class="example-box" cdkDrag>
-            {{children}}
+            {{Items}}
           </div>
         }
       </div>

@@ -14,21 +14,21 @@ import {CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray} from '@angular/cdk/d
 })
 export class AppComponent {
   
-movies = [
+  menu = [
   {
-    uId: '0',
-    name: 'GroupA',
-    children: ["a1", "a2", "a3"]
+    Id: '0',
+    Category: 'Burgers',
+    Items: ["Cheese Burger", "chicken burger", "Turkey burger", "Veggie burger"]
   },
   {
-    uId: '3',
-    name: 'GroupB',
-    children: ["b1", "b2"]
+    Id: '3',
+    Category: 'Pizza',
+    Items: ["Cheese Pizza", "Veggie Pizza", "Pepperoni Pizza", "Meat Pizza", "BBQ Chicken Pizza", "Supreme Pizza"]
   },
   {
-    uId: '4',
-    name: 'GroupC',
-    children: ["c1", "c2", "c3", "c4"]
+    Id: '4',
+    Category: 'Donuts',
+    Items: ["Baked Raspberry", "Mochi Donuts", "Bavarian Cream", "Chocolate Donuts"]
   }
 ];
 
@@ -36,15 +36,11 @@ movies = [
   drop(event: CdkDragDrop<string[]>) {
     console.info("event1")
     console.info(event)
-    moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.menu, event.previousIndex, event.currentIndex);
   }
   drop2(event: CdkDragDrop<string[]>, id:any) {
     console.info("event2")
     console.info(event)
-    this.movies.forEach((movie,idx)=>{
-      if(id.toString() === movie.uId.toString()){
-        moveItemInArray(this.movies[idx].children, event.previousIndex, event.currentIndex);
-      }
-    })
+    moveItemInArray(this.menu[id].Items, event.previousIndex, event.currentIndex);
   }
 }
