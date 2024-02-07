@@ -1,23 +1,40 @@
-<div cdkDropListGroup>
-<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  @for (catg of menu; track catg; let idx = $index) {
-    <div class="example-box" cdkDrag>
-      {{catg.Category}}
+<app-header></app-header>
+<app-alerts></app-alerts>
 
-      <div cdkDropList class="example-list" (cdkDropListDropped)="drop2($event, idx)">
-        @for (Items of catg.Items; track Items) {
-          <div class="example-box" cdkDrag>
-            {{Items}}
+<div class="row justify-content-between">
+  <div class="col-7">
+    <app-alerts></app-alerts>
+    <div cdkDropList class="category-wrap" (cdkDropListDropped)="drop($event)">
+      @for (catg of menu; track catg; let idx = $index) {
+      <div class="category-list" cdkDrag>
+        <div class="category-head">
+          <img src="assets/icons/move_items.svg">
+          {{catg.Category}}
+
+        </div>
+        <div cdkDropList class="items-wrap" (cdkDropListDropped)="drop2($event, idx)">
+          @for (Items of catg.Items; track Items) {
+          <div class="items-list" cdkDrag>
+            <div class="items-head">
+              <img src="assets/icons/move_items.svg">
+              {{Items}}
+            </div>
           </div>
-        }
+          }
+        </div>
+
+        <button type="button" class="btn btn-warning">Add item</button>
       </div>
 
-
+      }
     </div>
 
-  }
-</div>
-</div>
+  </div>
+  <div class="col-3">
+    <h3>Preview</h3>
+    <img src="assets/img/phone.png">
+  </div>
 
+</div>
 
 <!-- <router-outlet /> -->
