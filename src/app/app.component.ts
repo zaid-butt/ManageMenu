@@ -34,6 +34,17 @@ movies = [
 
 
   drop(event: CdkDragDrop<string[]>) {
+    console.info("event1")
+    console.info(event)
     moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
+  }
+  drop2(event: CdkDragDrop<string[]>, id:any) {
+    console.info("event2")
+    console.info(event)
+    this.movies.forEach((movie,idx)=>{
+      if(id.toString() === movie.uId.toString()){
+        moveItemInArray(this.movies[idx].children, event.previousIndex, event.currentIndex);
+      }
+    })
   }
 }

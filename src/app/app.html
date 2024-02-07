@@ -1,21 +1,23 @@
-
+<div cdkDropListGroup>
 <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  @for (movie of movies; track movie) {
+  @for (movie of movies; track movie;) {
     <div class="example-box" cdkDrag>
       {{movie.name}}
-    </div>
 
-    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-      @for (children of movie.children; track children) {
-        <div class="example-box" cdkDrag>
-          {{children}}
-        </div>
-      }
+      <div cdkDropList class="example-list" (cdkDropListDropped)="drop2($event, movie.uId)">
+        @for (children of movie.children; track children) {
+          <div class="example-box" cdkDrag>
+            {{children}}
+          </div>
+        }
+      </div>
+
+
     </div>
 
   }
 </div>
-
+</div>
 
 
 <!-- <router-outlet /> -->
