@@ -1,66 +1,53 @@
-
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
 
   <mat-tab label="Overview">
 
-    <cdk-accordion class="example-accordion" multi="true">
+    <cdk-accordion class="catg-accordion" multi="true">
 
-    <div cdkDropList class="category-wrap" (cdkDropListDropped)="drop($event)">
-    @for (catg of menu; track catg; let idx = $index) {
-      <cdk-accordion-item cdkDrag
-      #accordionItem="cdkAccordionItem"
-      class="example-accordion-item"
-      role="button"
-      tabindex="0"
-      [expanded]="true"
-      [attr.id]="'accordion-header-' + idx"
-      [attr.aria-controls]="'accordion-body-' + idx">
-      <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
-        {{ catg.Category }}
-        <span class="example-accordion-item-description">
-          Click to {{ accordionItem.expanded ? 'close' : 'open' }}
-        </span>
-      </div>
-      <div
-        class="example-accordion-item-body"
-        role="region"
-        [style.display]="accordionItem.expanded ? '' : 'none'"
-        [attr.id]="'accordion-body-' + idx"
-        [attr.aria-labelledby]="'accordion-header-' + idx">
-        <div class="category-list" >
-          <div class="category-head">
-            <img src="assets/icons/move_items.svg">
-    
-            {{catg.Category}}
-    
-          </div>
-    
-          <div cdkDropList class="items-wrap" (cdkDropListDropped)="drop2($event, idx)">
-            @for (Items of catg.Items; track Items) {
-            <div class="items-list" cdkDrag>
-              <div class="items-head">
-                <img src="assets/icons/move_items.svg">
-    
-                {{Items}}
-                
-              </div>
+      <div cdkDropList class="category-wrap" (cdkDropListDropped)="drop($event)">
+        @for (catg of menu; track catg; let idx = $index) {
+        <cdk-accordion-item cdkDrag #accordionItem="cdkAccordionItem" class="catg-accordion-item" role="button"
+          tabindex="0" [expanded]="true" [attr.id]="'accordion-header-' + idx"
+          [attr.aria-controls]="'accordion-body-' + idx">
+          <div class="catg-accordion-item-header" (click)="accordionItem.toggle()">
+            <div class="category-head">
+              <img src="assets/icons/move_items.svg">
+              {{catg.Category}}
+              <img src="assets/icons/{{ accordionItem.expanded ? 'tab_arrow_close' : 'tab_arrow_open' }}.svg">
             </div>
-            }
+            <div class="list_action">
+              <img src="assets/icons/edit.svg">
+              <img src="assets/icons/trash.svg">
+            </div>
           </div>
-        <div class="category-bottom">
-          <button mat-flat-button color="primary">Add item</button>
-        </div>
-        </div>
-      </div>
-    </cdk-accordion-item>
-    
+          <div class="catg-accordion-item-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none'"
+            [attr.id]="'accordion-body-' + idx" [attr.aria-labelledby]="'accordion-header-' + idx">
 
-    }
-  </div> 
-</cdk-accordion>
- </mat-tab>
+              <div cdkDropList class="items-wrap" (cdkDropListDropped)="drop2($event, idx)">
+                @for (Items of catg.Items; track Items) {
+                <div class="items-list" cdkDrag>
+                  <div class="items-head">
+                    <img src="assets/icons/move_items.svg">
+                    {{Items}}
+                  </div>
+                  <div class="list_action">
+                    <img src="assets/icons/edit.svg">
+                    <img src="assets/icons/trash.svg">
+                  </div>
+                </div>
+                }
+              </div>
+              <div class="category-bottom">
+                <button mat-flat-button color="primary">Add item</button>
+              </div>
+            
+          </div>
+        </cdk-accordion-item>
+
+
+        }
+      </div>
+    </cdk-accordion>
+  </mat-tab>
   <mat-tab label="Settings"> Settings </mat-tab>
 </mat-tab-group>
-
-
-
