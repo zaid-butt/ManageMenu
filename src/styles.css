@@ -1,10 +1,17 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import 'theme.scss';
 
 body {
-    margin: 0;
-    padding: 15px;
-  }
+  margin: 0;
+  padding: 15px;
+}
 
-  .phoneimg {
-    text-align: right;
-  }
+.topnavi {
+  display: flex;
+}
+
+.phoneimg {
+  text-align: right;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

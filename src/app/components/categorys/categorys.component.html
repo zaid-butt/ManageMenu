@@ -1,0 +1,36 @@
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+  <mat-tab label="Overview"> <div cdkDropList class="category-wrap" (cdkDropListDropped)="drop($event)">
+    @for (catg of menu; track catg; let idx = $index) {
+    <div class="category-list" cdkDrag>
+      <div class="category-head">
+        <img src="assets/icons/move_items.svg">
+
+        {{catg.Category}}
+
+      </div>
+
+      <div cdkDropList class="items-wrap" (cdkDropListDropped)="drop2($event, idx)">
+        @for (Items of catg.Items; track Items) {
+        <div class="items-list" cdkDrag>
+          <div class="items-head">
+            <img src="assets/icons/move_items.svg">
+
+            {{Items}}
+            
+          </div>
+        </div>
+        }
+      </div>
+    <div class="category-bottom">
+      <button mat-flat-button color="primary">Add item</button>
+    </div>
+    </div>
+
+    }
+  </div> 
+ </mat-tab>
+  <mat-tab label="Settings"> Settings </mat-tab>
+</mat-tab-group>
+
+
+
