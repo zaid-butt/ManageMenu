@@ -30,18 +30,38 @@ export class CategorysComponent {
   dlg = this.odlg;
 
   menu = [
+    // {
+    //   Id: '1',
+    //   Category: 'Burgers',
+    //   Items: [
+    //     {
+    //     ItemName: "Cheese Burger",
+    //     ItemPrice: "100",
+    //     img: "https://b2cappassetscdn.theentertainerme.com/v7/standard/DXB-Standard-359x404.png",
+    //   },
+    //   {
+    //     ItemName: "Chicken burger",
+    //     ItemPrice: "100",
+    //     img: "https://b2cappassetscdn.theentertainerme.com/v7/standard/DXB-Standard-359x404.png",
+    //   },
+    //   {
+    //     ItemName: "Veggie burger",
+    //     ItemPrice: "100",
+    //     img: "https://b2cappassetscdn.theentertainerme.com/v7/standard/DXB-Standard-359x404.png",
+    //   },]
+    // },
     {
-      Id: '0',
+      Id: '1',
       Category: 'Burgers',
       Items: ["Cheese Burger", "Chicken burger", "Veggie burger"]
     },
     {
-      Id: '3',
+      Id: '2',
       Category: 'Pizza',
       Items: ["Cheese Pizza", "Pepperoni Pizza", "Meat Pizza", "BBQ Chicken Pizza", "Supreme Pizza"]
     },
     {
-      Id: '4',
+      Id: '3',
       Category: 'Donuts',
       //Items: ["Baked Raspberry", "Bavarian Cream", "Chocolate Donuts"]
       Items: []
