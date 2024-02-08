@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray} from '@angular/cdk/drag-drop';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
+import {CdkAccordionModule} from '@angular/cdk/accordion';
 
 @Component({
   selector: 'app-categorys',
@@ -10,12 +11,14 @@ import {MatTabsModule} from '@angular/material/tabs';
     CdkDropList,
     CdkDrag,
     MatButtonModule,
-    MatTabsModule
+    MatTabsModule,
+    CdkAccordionModule
     ],
   templateUrl: './categorys.component.html',
   styleUrl: './categorys.component.scss'
 })
 export class CategorysComponent {
+
   menu = [
     {
       Id: '0',
