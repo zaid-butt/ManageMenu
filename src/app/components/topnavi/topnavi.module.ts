@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   template: `
       <div class="topnavi">
       <img src="assets/icons/arrow-left.svg">
-      <h3>Main menu</h3>
+      <h1>Main menu</h1>
       </div>
   `,
   //styleUrl: './alerts.component.css'
