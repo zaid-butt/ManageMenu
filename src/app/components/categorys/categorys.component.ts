@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component,ElementRef } from '@angular/core';
 import {CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray} from '@angular/cdk/drag-drop';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
+
+import { DialogOverviewExample } from '../dialog/dialog.component';
+
 
 @Component({
   selector: 'app-categorys',
@@ -12,12 +15,19 @@ import {CdkAccordionModule} from '@angular/cdk/accordion';
     CdkDrag,
     MatButtonModule,
     MatTabsModule,
-    CdkAccordionModule
+    CdkAccordionModule,
+    DialogOverviewExample,
     ],
   templateUrl: './categorys.component.html',
-  styleUrl: './categorys.component.scss'
+  styleUrl: './categorys.component.scss',
+  providers:[DialogOverviewExample]
 })
+
+
+
 export class CategorysComponent {
+
+  dlg = this.odlg;
 
   menu = [
     {
@@ -38,7 +48,10 @@ export class CategorysComponent {
     }
   ];
   
-  
+  constructor(private odlg:DialogOverviewExample){
+
+    
+  }
     drop(event: CdkDragDrop<string[]>) {
       console.info("event1")
       console.info(event)

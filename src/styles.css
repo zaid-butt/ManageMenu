@@ -9,12 +9,48 @@ body {
   display: flex;
   margin: 15px 0;
 }
+
 .topnavi * {
   align-self: center;
   margin: 0 !important;
 }
+
 .phoneimg {
   text-align: right;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.zpopup {
+  width: 100%;
+  max-width: 540px;
+  background: red;
+}
+
+.zpopup-header {
+  width: 100%;
+  max-width: 540px;
+}
+
+.zpopup-title {
+  width: 100%;
+  max-width: 540px;
+}
+
+.zpopup-body {
+  width: 100%;
+  max-width: 540px;
+}
+
+.zpopup-footer {
+  width: 100%;
+  max-width: 540px;
+}

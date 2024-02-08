@@ -5,6 +5,7 @@ import { Topnavi } from './components/topnavi/topnavi.module';
 import { CategorysComponent } from './components/categorys/categorys.component';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.html',
