@@ -31,6 +31,7 @@ body {
 
 .zpopup {
   position: relative;
+  overflow: hidden;
 }
 
 .zpopup-wrap {
@@ -76,15 +77,31 @@ body {
   display: flex;
   justify-content: center;
 }
+#zpopup_addnew {
+  left: -900px;
+}
+#zpopup_main.selecteditem #zpopup_addnew {
+  left: 0;
+}
+#zpopup_additem,
+#zpopup_addcategory {
+  right: -900px;
+}
+#zpopup_main.add_item #zpopup_additem,
+#zpopup_main.add_category #zpopup_addcategory {
+  right: 0;
+}
 #zpopup_addnew,
 #zpopup_additem,
 #zpopup_addcategory {
-  display: none;
+  position: absolute;
+  top: 0;
+  transition: all 0.3s;
 }
 #zpopup_main.selecteditem #zpopup_addnew,
 #zpopup_main.add_item #zpopup_additem,
 #zpopup_main.add_category #zpopup_addcategory {
-  display: block;
+  position: relative;
 }
 /* .add_item {
   background-color: red;
