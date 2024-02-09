@@ -69,11 +69,26 @@ body {
   border-top: 1px solid #EEEEEE;
 }
 
-.addbtns {
+#addbtns {
   display: flex;
   justify-content: center;
 }
-
+#zpopup_addnew,
+#zpopup_additem,
+#zpopup_addcategory {
+  display: none;
+}
+#zpopup_main.selecteditem #zpopup_addnew,
+#zpopup_main.add_item #zpopup_additem,
+#zpopup_main.add_category #zpopup_addcategory {
+  display: block;
+}
+/* .add_item {
+  background-color: red;
+}
+.add_category {
+  background-color: green;
+} */
 .radio-container {
   display: block;
   position: relative;

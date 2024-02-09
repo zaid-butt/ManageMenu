@@ -15,8 +15,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 // export interface DialogData {
 export interface DialogData {
-  animal: string;
-  name: string;
+  
 }
 
 /**
@@ -30,21 +29,16 @@ export interface DialogData {
   imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule],
 })
 export class DialogOverviewExample {
-   animal: String = "";
-   name: String = "";
    
-
+  myFunc(){}
+  cclass = ''
+  addbtns = ''
   constructor(public dialog: MatDialog) {}
 
   public openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      data: {name: this.name, animal: this.animal},
-    });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
+    this.dialog.open(DialogOverviewExampleDialog);
+    
   }
 }
 
@@ -64,6 +58,18 @@ export class DialogOverviewExample {
   ],
 })
 export class DialogOverviewExampleDialog {
+  cclass = "selecteditem"
+  addbtns = "add_item"
+  // myFunc(){
+  //   if (this.addbtns == "add_item"){
+  //     this.cclass = "add_item"
+  //   }
+  //   else {
+  //     this.cclass = "add_item"
+  //   }
+    
+  // }
+  
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,

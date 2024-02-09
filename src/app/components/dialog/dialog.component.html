@@ -1,20 +1,20 @@
-<div class="zpopup">
+<div id="zpopup_main" class="zpopup  {{cclass}}">
     <div id="zpopup_addnew" class="zpopup-wrap">
         <div class="zpopup-header">
             <h3 class="zpopup-title">Add new</h3>
             <a class="icon" mat-dialog-close><img src="assets/icons/close.svg"></a>
         </div>
         <div class="zpopup-body">
-            <div class="addbtns">
+            <div id="addbtns">
                 <label class="radio-container">
-                    <input type="radio" name="radio">
+                    <input id="addbtns1" type="radio" name="radio" [(ngModel)]="addbtns" value="add_category">
                     <p class="checkmark">
                         <img src="assets/icons/AddCategory.svg">
                         <span>Add category</span>
                     </p>
                 </label>
                 <label class="radio-container">
-                    <input type="radio" name="radio">
+                    <input id="addbtns2" type="radio" name="radio" [(ngModel)]="addbtns" value="add_item">
                     <p class="checkmark">
                         <img src="assets/icons/AddItem.svg">
                         <span>Add item</span>
@@ -24,17 +24,18 @@
         </div>
         <div class="zpopup-footer">
             <a mat-dialog-close>Close</a>
-            <button mat-flat-button color="primary">Next</button>
+            <!-- // @ts-ignore -->
+            <button mat-flat-button color="primary" (click)="cclass=addbtns">Next</button>
         </div>
     </div>
 
     <div id="zpopup_additem"class="zpopup-wrap">
         <div class="zpopup-header">
             <h3 class="zpopup-title">Add item</h3>
-            <a class="icon"><img src="assets/icons/arrow-left.svg"></a>
+            <a class="icon"><img (click)="cclass='selecteditem'" src="assets/icons/arrow-left.svg"></a>
         </div>
         <div class="zpopup-body">
-            <p>Modal body text goes here.</p>
+            <img src="assets/img/img_form.png">
         </div>
         <div class="zpopup-footer">
             <a mat-dialog-close>Close</a>
@@ -45,10 +46,10 @@
 <div id="zpopup_addcategory"class="zpopup-wrap">
         <div class="zpopup-header">
             <h3 class="zpopup-title">Add category</h3>
-            <a class="icon"><img src="assets/icons/arrow-left.svg"></a>
+            <a class="icon"><img (click)="cclass='selecteditem'" src="assets/icons/arrow-left.svg"></a>
         </div>
         <div class="zpopup-body">
-            <p>Modal body text goes here.</p>
+            <p>category category category</p>
         </div>
         <div class="zpopup-footer">
             <a mat-dialog-close>Close</a>
