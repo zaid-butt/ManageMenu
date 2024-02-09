@@ -59,6 +59,9 @@ body {
 
 .zpopup-body {
   padding: 15px;
+  max-height: calc(99vh - 140px);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .zpopup-footer {
