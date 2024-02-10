@@ -35,7 +35,7 @@ export class CategorysComponent {
   constructor(private odlg:DialogOverviewExample, private appservice:AppService){
   }
 
-  edititem (g_cat:any, g_itm:any){
+  edititem (g_cat:any, g_itm:any, itmidx:any){
     // console.log(g_cat);
     // console.log(g_itm);
     // console.log("edit item " + g_itm.ItemName + " and Category " + g_cat.Category )
@@ -47,6 +47,14 @@ export class CategorysComponent {
 
     let item_Price2 = document.getElementById("item_Price2");
     item_Price2?.setAttribute("value", g_itm.PassPrice);
+    this.appservice.editItemjObj = g_itm;
+    this.appservice.editItemjObj.idx = itmidx;
+  }
+  removecat(catidx:any){
+    this.appservice.menu.splice(catidx,1)
+  }
+  removeitem(catidx:any, itmidx:any){
+    this.appservice.menu[catidx].Items.splice(itmidx,1)
   }
 
     drop(event: CdkDragDrop<string[]>) {

@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class AppService {
 public selectedCatIndex:any = null
 public selectedCat:any=null
+public editItemjObj:any=null
 public menu:any = [
   {
     Id: '1',

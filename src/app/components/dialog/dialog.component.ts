@@ -17,7 +17,6 @@ import { CommonModule } from '@angular/common';
 
 import { AbstractControl, FormBuilder, FormGroup,FormControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-// import Validation from '../../utils/validation';
 
 import { AppService } from '../../app.service';
 export interface DialogData {
@@ -29,7 +28,7 @@ export interface DialogData {
  */
 @Component({
   selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
+  template: '',
   styleUrl: './dialog.component.css',
   standalone: true,
   imports: [
@@ -42,67 +41,14 @@ export interface DialogData {
     CommonModule
   ],
 })
-export class DialogOverviewExample implements OnInit{
-   
-  form: FormGroup = new FormGroup({
-    item_name: new FormControl(''),
-    item_price: new FormControl(0),
-    item_price2: new FormControl(0),
-  });
-  submitted = false
-
-  myFunc(){}
-  cclass = ''
-  addbtns = ''
-
-  foods:any = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
+export class DialogOverviewExample {
+  constructor(public dialog: MatDialog, public appservice:AppService) {}
   
-
-  constructor(public dialog: MatDialog,private formBuilder: FormBuilder, public appservice:AppService) {}
-  ngOnInit(): void {
-    this.form = this.formBuilder.group(
-      {
-        item_name: [''],
-        item_price: [
-          ''
-        ],
-        item_price2: [
-          ''
-        ],
-      }        
-    );
-  }
-  get f(): { [key: string]: AbstractControl } {
-    return this.form.controls;
-  }
-
-  onSubmit(): void {
-    console.info("easdf2")
-    this.submitted = true;
-
-    if (this.form.invalid) {
-      return;
-    }
-
-    console.log(JSON.stringify(this.form.value, null, 2));
-  }
-
-  onReset(): void {
-    console.info("easdf")
-    this.submitted = false;
-    this.form.reset();
-  }
   public openDialog(g_cat:any, idx:any): void {
     this.dialog.open(DialogOverviewExampleDialog);
-
     console.log(g_cat.Category);
     this.appservice.selectedCatIndex = idx;
     this.appservice.selectedCat = g_cat;
-    
   }
 }
 
@@ -130,7 +76,7 @@ export class DialogOverviewExampleDialog implements OnInit{
   form: FormGroup = new FormGroup({
     item_name: new FormControl(''),
     item_price: new FormControl(0),
-    item_price2: new FormControl(0),
+    pass_price: new FormControl(0),
   });
   submitted = false
 
@@ -155,22 +101,40 @@ export class DialogOverviewExampleDialog implements OnInit{
   ) {}
 
   ngOnInit(): void {
+    this.dialogRef.afterClosed().subscribe(result => {
+      this.appservice.editItemjObj = null
+    });
     this.form = this.formBuilder.group(
       {
         item_name: [''],
         item_price: [
           ''
         ],
-        item_price2: [
+        pass_price: [
           ''
         ],
       }        
     );
+    if(this.appservice.editItemjObj){
+      this.cclass = 'add_item'
+
+      this.form.patchValue({
+        item_name: this.appservice.editItemjObj.ItemName,
+      })
+      this.form.patchValue({
+        item_price: this.appservice.editItemjObj.ItemPrice,
+      })
+      this.form.patchValue({
+        pass_price: this.appservice.editItemjObj.PassPrice,
+      })
+      
+    }
+    
   }
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }
-
+  
   onSubmit(): void {
     this.submitted = true;
     
@@ -182,14 +146,23 @@ export class DialogOverviewExampleDialog implements OnInit{
 
     
 
-    this.appservice.menu[this.appservice.selectedCatIndex].Items.push(
-      {
-        ItemName: this.form.value.item_name,
-        ItemPrice: this.form.value.item_price,
-        PassPrice: this.form.value.item_price2,
-        img: "https://www.shutterstock.com/shutterstock/photos/313906544/display_1500/stock-photo-tasty-and-appetizing-hamburger-on-a-yellow-background-313906544.jpg",
-      }
-    )    
+    if(this.appservice.editItemjObj){
+      let updt = this.appservice.menu[this.appservice.selectedCatIndex].Items[this.appservice.editItemjObj.idx];
+      updt.ItemName = this.form.value.item_name
+      updt.ItemPrice = this.form.value.item_price
+      updt.PassPrice = this.form.value.pass_price  
+      this.appservice.editItemjObj = null
+    } else {
+
+      this.appservice.menu[this.appservice.selectedCatIndex].Items.push(
+        {
+          ItemName: this.form.value.item_name,
+          ItemPrice: this.form.value.item_price,
+          PassPrice: this.form.value.pass_price,
+          img: "https://www.shutterstock.com/shutterstock/photos/313906544/display_1500/stock-photo-tasty-and-appetizing-hamburger-on-a-yellow-background-313906544.jpg",
+        }
+      )    
+    }
 
     this.submitted = false;
     this.dialogRef.close();
@@ -202,9 +175,12 @@ export class DialogOverviewExampleDialog implements OnInit{
     console.info("easdf")
     this.submitted = false;
     this.form.reset();
+    this.appservice.editItemjObj = null
   }
   onNoClick(): void {
     this.dialogRef.close();
+    this.form.reset();
+    this.appservice.editItemjObj = null
   }
 }
 

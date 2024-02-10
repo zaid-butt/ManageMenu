@@ -2,7 +2,7 @@
     <div id="zpopup_addnew" class="zpopup-wrap">
         <div class="zpopup-header">
             <h3 class="zpopup-title">Add new</h3>
-            <a class="icon" mat-dialog-close><img src="assets/icons/close.svg"></a>
+            <a class="icon" mat-dialog-close (click)="appservice.editItemjObj=null"><img src="assets/icons/close.svg"></a>
         </div>
         <div class="zpopup-body">
             <div id="addbtns">
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="zpopup-footer">
-            <a mat-dialog-close>Close</a>
+            <a mat-dialog-close (click)="appservice.editItemjObj=null">Close</a>
             <button mat-flat-button color="primary" (click)="cclass=addbtns">Next</button>
         </div>
     </div>
@@ -62,8 +62,8 @@
                     <div class="col-6">
                         <mat-form-field>
                             <mat-label>Price 2nd </mat-label>
-                            <input name="item_Price2" id="item_Price2" matInput type="number" formControlName="item_price2"
-                            [ngClass]="{ 'is-invalid': submitted && f['item_price2'].errors }">
+                            <input name="item_Price2" id="item_Price2" matInput type="number" formControlName="pass_price"
+                            [ngClass]="{ 'is-invalid': submitted && f['pass_price'].errors }">
                         </mat-form-field>
                     </div>
                     <div class="col-12">
@@ -88,8 +88,9 @@
             </form>
         </div>
         <div class="zpopup-footer">
-            <a mat-dialog-close>Close</a>
-            <button mat-flat-button color="primary" (click)="onSubmit()" type="submit">Create item</button>
+            <a mat-dialog-close (click)="appservice.editItemjObj=null">Close</a>
+            <button *ngIf="!appservice.editItemjObj" mat-flat-button color="primary" (click)="onSubmit()" type="submit">Create item</button>
+            <button *ngIf="appservice.editItemjObj" mat-flat-button color="primary" (click)="onSubmit()" type="submit">Update item</button>
         </div>
         
     </div>
@@ -103,7 +104,7 @@
             <p>category category category</p>
         </div>
         <div class="zpopup-footer">
-            <a mat-dialog-close>Close</a>
+            <a mat-dialog-close (click)="appservice.editItemjObj=null">Close</a>
             <button mat-flat-button color="primary">Create category</button>
         </div>
     </div>

@@ -18,14 +18,14 @@
             </div>
             <div class="list_action">
               <img src="assets/icons/edit.svg">
-              <img src="assets/icons/trash.svg">
+              <img (click)="removecat(idx)" src="assets/icons/trash.svg">
             </div>
           </div>
           <div class="catg-accordion-item-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none'"
             [attr.id]="'accordion-body-' + idx" [attr.aria-labelledby]="'accordion-header-' + idx">
 
             <div cdkDropList class="items-wrap" (cdkDropListDropped)="drop2($event, idx)">
-              @for (Itm of catg.Items; track Itm; let idx = $index) {
+              @for (Itm of catg.Items; track Itm; let itmidx = $index) {
               <div class="items-list" cdkDrag>
                 <div class="items-head">
                   <img src="assets/icons/move_items.svg">
@@ -38,8 +38,8 @@
                   </div>
                 </div>
                 <div class="list_action">
-                  <img (click)="dlg.openDialog(catg, idx)" (click)="edititem(catg, Itm)" src="assets/icons/edit.svg">
-                  <img src="assets/icons/trash.svg">
+                  <img (click)="edititem(catg, Itm,itmidx)" (click)="dlg.openDialog(catg, idx)" src="assets/icons/edit.svg">
+                  <img (click)="removeitem(idx,itmidx)" src="assets/icons/trash.svg">
                 </div>
               </div>
               }
