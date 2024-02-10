@@ -36,10 +36,15 @@ export class CategorysComponent {
   }
 
   edititem (g_cat:any, g_itm:any, itmidx:any){
-    
-    this.appservice.editItemjObj = g_itm;
-    this.appservice.editItemjObj.idx = itmidx;
+    this.appservice.editItemObj = g_itm;
+    this.appservice.editItemObj.idx = itmidx;
   }
+
+  editcat (g_cat:any, idx:any){
+    this.appservice.editCatObj = g_cat;
+    this.appservice.editCatObj.idx = idx;
+  }
+
   removecat(catidx:any){
     this.appservice.menu.splice(catidx,1)
   }

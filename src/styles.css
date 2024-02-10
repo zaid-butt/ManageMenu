@@ -38,6 +38,13 @@ body {
   color: #b1b1b1 !important;
 }
 
+.invalid-feedback {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  text-align: right;
+}
+
 .zpopup {
   position: relative;
   overflow: hidden;

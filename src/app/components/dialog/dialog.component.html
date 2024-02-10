@@ -2,7 +2,7 @@
     <div id="zpopup_addnew" class="zpopup-wrap">
         <div class="zpopup-header">
             <h3 class="zpopup-title">Add new</h3>
-            <a class="icon" mat-dialog-close (click)="appservice.editItemjObj=null"><img src="assets/icons/close.svg"></a>
+            <a class="icon" mat-dialog-close><img src="assets/icons/close.svg"></a>
         </div>
         <div class="zpopup-body">
             <div id="addbtns">
@@ -23,31 +23,35 @@
             </div>
         </div>
         <div class="zpopup-footer">
-            <a mat-dialog-close (click)="appservice.editItemjObj=null">Close</a>
+            <a mat-dialog-close>Close</a>
             <button mat-flat-button color="primary" (click)="cclass=addbtns">Next</button>
         </div>
     </div>
 
     <div id="zpopup_additem" class="zpopup-wrap">
         
-        <div class="zpopup-header">
+        <div class="zpopup-header" *ngIf="!appservice.editItemObj">
             <h3 class="zpopup-title">Add item</h3>
             <a class="icon"><img (click)="cclass='selecteditem'" src="assets/icons/arrow-left.svg"></a>
         </div>
+        <div class="zpopup-header" *ngIf="appservice.editItemObj">
+            <h3 class="zpopup-title">Edit item </h3>
+            <a class="icon"><img mat-dialog-close src="assets/icons/close.svg"></a>
+        </div>
         <div class="zpopup-body">
-            <form class="example-form" [formGroup]="form">
+            <form class="-" [formGroup]="itemform">
                 <div class="row">
                     <div class="col-12">
                         <mat-form-field fill>
                             <mat-label>Item name</mat-label>
-                            <input name="item_itemname" id="item_itemname" matInput required formControlName="item_name"
-                            [ngClass]="{ 'is-invalid': submitted && f['item_name'].errors }">
-                            @if (submitted && f['item_name'].errors) {
-                                <div class="invalid-feedback">
+                            <input name="item_itemname" matInput required formControlName="item_name"
+                            [ngClass]="{ 'is-invalid': itemSubmitted && f['item_name'].errors }">
+                            @if (itemSubmitted && f['item_name'].errors) {
+                                <span class="invalid-feedback">
                                   @if (f['item_name'].errors['required']) {
-                                  <div>Item name is required</div>
+                                  <span>Required </span>
                                   }
-                                </div>
+                                </span>
                                 }
                         </mat-form-field>
                         
@@ -55,15 +59,21 @@
                     <div class="col-6">
                         <mat-form-field>
                             <mat-label>Price 1st </mat-label>
-                            <input name="item_Price1" id="item_Price1" matInput type="number" formControlName="item_price"
-                            [ngClass]="{ 'is-invalid': submitted && f['item_price'].errors }">
+                            <input name="item_Price1" matInput required type="number" formControlName="item_price"
+                            [ngClass]="{ 'is-invalid': itemSubmitted && f['item_price'].errors }">
+                            @if (itemSubmitted && f['item_price'].errors) {
+                                <span class="invalid-feedback">
+                                  @if (f['item_price'].errors['required']) {
+                                  <span>Required </span>
+                                  }
+                                </span>
+                                }
                         </mat-form-field>
                     </div>
                     <div class="col-6">
                         <mat-form-field>
-                            <mat-label>Price 2nd </mat-label>
-                            <input name="item_Price2" id="item_Price2" matInput type="number" formControlName="pass_price"
-                            [ngClass]="{ 'is-invalid': submitted && f['pass_price'].errors }">
+                            <mat-label>Pass Price </mat-label>
+                            <input name="pass_price" matInput type="number" formControlName="pass_price">
                         </mat-form-field>
                     </div>
                     <div class="col-12">
@@ -86,23 +96,49 @@
         </div>
         <div class="zpopup-footer">
             <a mat-dialog-close>Close</a>
-            <button *ngIf="!appservice.editItemjObj" mat-flat-button color="primary" (click)="onSubmit()" type="submit">Create item</button>
-            <button *ngIf="appservice.editItemjObj" mat-flat-button color="primary" (click)="onSubmit()" type="submit">Update item</button>
+            <button mat-flat-button color="primary" (click)="onItem()" type="submit">{{appservice.editItemObj? "Update item":"Create item"}} </button>
         </div>
         
     </div>
 
     <div id="zpopup_addcategory" class="zpopup-wrap">
-        <div class="zpopup-header">
+        
+        <div class="zpopup-header" *ngIf="!appservice.editCatObj">
             <h3 class="zpopup-title">Add category</h3>
             <a class="icon"><img (click)="cclass='selecteditem'" src="assets/icons/arrow-left.svg"></a>
         </div>
+        <div class="zpopup-header" *ngIf="appservice.editCatObj">
+            <h3 class="zpopup-title">Edit category </h3>
+            <a class="icon"><img mat-dialog-close src="assets/icons/close.svg"></a>
+        </div>
+
         <div class="zpopup-body">
-            <p>category category category</p>
+            <form class="-" [formGroup]="catform">
+                <div class="row">
+                    <div class="col-12">
+                        <mat-form-field fill>
+                            <mat-label>Category name</mat-label>
+                            <input name="cat_catname" matInput required formControlName="cat_name"
+                            [ngClass]="{ 'is-invalid': catSubmitted && c['cat_name'].errors }">
+                            @if (catSubmitted && c['cat_name'].errors) {
+                                <span class="invalid-feedback">
+                                  @if (c['cat_name'].errors['required']) {
+                                  <span>Required </span>
+                                  }
+                                </span>
+                                }
+                        </mat-form-field>
+                        
+                    </div>
+                    
+                </div>
+
+
+            </form>
         </div>
         <div class="zpopup-footer">
-            <a mat-dialog-close (click)="appservice.editItemjObj=null">Close</a>
-            <button mat-flat-button color="primary">Create category</button>
+            <a mat-dialog-close >Close</a>
+            <button mat-flat-button color="primary" (click)="onCat()" type="submit">{{appservice.editCatObj? "Update category":"Create category"}} </button>
         </div>
     </div>
 

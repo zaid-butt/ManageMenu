@@ -1,10 +1,7 @@
 
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-
   <mat-tab label="Overview">
-
     <cdk-accordion class="catg-accordion" multi="true">
-
       <div cdkDropList class="category-wrap" (cdkDropListDropped)="drop($event)">
         @for (catg of menu; track catg; let idx = $index) {
         <cdk-accordion-item cdkDrag #accordionItem="cdkAccordionItem" class="catg-accordion-item" role="button"
@@ -17,7 +14,7 @@
               <img src="assets/icons/{{ accordionItem.expanded ? 'tab_arrow_close' : 'tab_arrow_open' }}.svg">
             </div>
             <div class="list_action">
-              <img src="assets/icons/edit.svg">
+              <img (click)="editcat(catg, idx)" (click)="dlg.openDialog(catg, idx)" src="assets/icons/edit.svg">
               <img (click)="removecat(idx)" src="assets/icons/trash.svg">
             </div>
           </div>

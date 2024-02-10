@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 export class AppService {
 public selectedCatIndex:any = null
 public selectedCat:any=null
-public editItemjObj:any=null
+public editItemObj:any=null
+public editCatObj:any=null
 public menu:any = [
   {
     Id: '1',
@@ -16,19 +17,19 @@ public menu:any = [
       ItemName: "Cheese Burger",
       ItemPrice: 200,
       PassPrice: 123,
-      img: "https://www.shutterstock.com/shutterstock/photos/313906544/display_1500/stock-photo-tasty-and-appetizing-hamburger-on-a-yellow-background-313906544.jpg",
+      img: "http://localhost:4200/assets/img/temp.jpg",
     },
     {
       ItemName: "Chicken burger",
       ItemPrice: 250,
       PassPrice: 100,
-      img: "https://www.shutterstock.com/shutterstock/photos/154462136/display_1500/stock-photo-fast-food-with-big-tasty-traditional-double-cheeseburger-or-hamburger-154462136.jpg",
+      img: "http://localhost:4200/assets/img/temp.jpg",
     },
     {
       ItemName: "Veggie burger",
       ItemPrice: 150,
       PassPrice: 50,
-      img: "https://www.shutterstock.com/shutterstock/photos/81497311/display_1500/stock-photo-double-cheeseburger-with-tomatoes-and-lettuce-on-blue-background-81497311.jpg",
+      img: "http://localhost:4200/assets/img/temp.jpg",
     },]
   },
   {
@@ -39,31 +40,31 @@ public menu:any = [
         ItemName: "Cheese Pizza ",
         ItemPrice: 100,
         PassPrice: 50,
-        img: "https://www.shutterstock.com/shutterstock/photos/1514037083/display_1500/stock-photo-pizza-margherita-on-black-stone-background-top-view-pizza-margarita-with-tomatoes-basil-and-1514037083.jpg",
+        img: "http://localhost:4200/assets/img/temp.jpg",
       },
       {
         ItemName: "Pepperoni Pizza ",
         ItemPrice: 200,
         PassPrice: 100,
-        img: "https://www.shutterstock.com/shutterstock/photos/1514037083/display_1500/stock-photo-pizza-margherita-on-black-stone-background-top-view-pizza-margarita-with-tomatoes-basil-and-1514037083.jpg",
+        img: "http://localhost:4200/assets/img/temp.jpg",
       },
       {
       ItemName: "Meat Pizza ",
       ItemPrice: 300,
       PassPrice: 100,
-      img: "https://www.shutterstock.com/shutterstock/photos/1514037083/display_1500/stock-photo-pizza-margherita-on-black-stone-background-top-view-pizza-margarita-with-tomatoes-basil-and-1514037083.jpg",
+      img: "http://localhost:4200/assets/img/temp.jpg",
     },
     {
       ItemName: "BBQ Chicken Pizza ",
       ItemPrice: 125,
       PassPrice: 75,
-      img: "https://www.shutterstock.com/shutterstock/photos/1514037083/display_1500/stock-photo-pizza-margherita-on-black-stone-background-top-view-pizza-margarita-with-tomatoes-basil-and-1514037083.jpg",
+      img: "http://localhost:4200/assets/img/temp.jpg",
     },
     {
       ItemName: "Supreme Pizza ",
       ItemPrice: 100,
       PassPrice: 50,
-      img: "https://www.shutterstock.com/shutterstock/photos/1514037083/display_1500/stock-photo-pizza-margherita-on-black-stone-background-top-view-pizza-margarita-with-tomatoes-basil-and-1514037083.jpg",
+      img: "http://localhost:4200/assets/img/temp.jpg",
     },]
   },
   {
@@ -74,19 +75,19 @@ public menu:any = [
     //   ItemName: "Baked Raspberry ",
     //   ItemPrice: 200,
     //   PassPrice: 100,
-    //   img: "https://b2cappassetscdn.theentertainerme.com/v7/standard/DXB-Standard-359x404.png",
+    //   img: "http://localhost:4200/assets/img/temp.jpg",
     // },
     // {
     //   ItemName: "Bavarian Cream ",
     //   ItemPrice: 200,
     //   PassPrice: 100,
-    //   img: "https://b2cappassetscdn.theentertainerme.com/v7/standard/DXB-Standard-359x404.png",
+    //   img: "http://localhost:4200/assets/img/temp.jpg",
     // },
     // {
     //   ItemName: "Chocolate Donuts ",
     //   ItemPrice: 200,
     //   PassPrice: 100,
-    //   img: "https://b2cappassetscdn.theentertainerme.com/v7/standard/DXB-Standard-359x404.png",
+    //   img: "http://localhost:4200/assets/img/temp.jpg",
     // },
   ]
   },

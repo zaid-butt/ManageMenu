@@ -46,7 +46,7 @@ export class DialogOverviewExample {
   
   public openDialog(g_cat:any, idx:any): void {
     this.dialog.open(DialogOverviewExampleDialog);
-    console.log(g_cat.Category);
+    // console.log(g_cat.Category);
     this.appservice.selectedCatIndex = idx;
     this.appservice.selectedCat = g_cat;
   }
@@ -73,12 +73,17 @@ export class DialogOverviewExample {
 export class DialogOverviewExampleDialog implements OnInit{
 
 
-  form: FormGroup = new FormGroup({
+  itemform: FormGroup = new FormGroup({
     item_name: new FormControl(''),
     item_price: new FormControl(0),
     pass_price: new FormControl(0),
   });
-  submitted = false
+  itemSubmitted = false
+
+  catform: FormGroup = new FormGroup({
+    cat_name: new FormControl(''),
+  });
+  catSubmitted = false
 
 
   cclass = "selecteditem"
@@ -93,85 +98,108 @@ export class DialogOverviewExampleDialog implements OnInit{
 
   ngOnInit(): void {
     this.dialogRef.afterClosed().subscribe(result => {
-      this.appservice.editItemjObj = null
+      this.appservice.editItemObj = null
+      this.appservice.editCatObj = null
     });
-    this.form = this.formBuilder.group(
-      {
+
+    this.itemform = this.formBuilder.group({
         item_name: [''],
-        item_price: [
-          ''
-        ],
-        pass_price: [
-          ''
-        ],
+        item_price: [''],
+        pass_price: [''],
       }        
     );
-    if(this.appservice.editItemjObj){
+    if(this.appservice.editItemObj){
       this.cclass = 'add_item'
 
-      this.form.patchValue({
-        item_name: this.appservice.editItemjObj.ItemName,
+      this.itemform.patchValue({
+        item_name: this.appservice.editItemObj.ItemName,
       })
-      this.form.patchValue({
-        item_price: this.appservice.editItemjObj.ItemPrice,
+      this.itemform.patchValue({
+        item_price: this.appservice.editItemObj.ItemPrice,
       })
-      this.form.patchValue({
-        pass_price: this.appservice.editItemjObj.PassPrice,
+      this.itemform.patchValue({
+        pass_price: this.appservice.editItemObj.PassPrice,
       })
-      
     }
+
+    this.catform = this.formBuilder.group({
+        cat_name: ['',Validators.required],
+      });
+
+    if(this.appservice.editCatObj){
+      this.cclass = 'add_category'
+      this.catform.patchValue({
+        cat_name: this.appservice.editCatObj.Category,
+      })
+    }
+
+    
     
   }
+
   get f(): { [key: string]: AbstractControl } {
-    return this.form.controls;
+    return this.itemform.controls;
+  }
+
+  get c(): { [key: string]: AbstractControl } {
+    return this.catform.controls;
   }
   
-  onSubmit(): void {
-    this.submitted = true;
+  onItem(): void {
+    this.itemSubmitted = true;
     
-    
-    
-    if (this.form.invalid) {
+    if (this.itemform.invalid) {
       return;
     }
 
-    
-
-    if(this.appservice.editItemjObj){
-      let updt = this.appservice.menu[this.appservice.selectedCatIndex].Items[this.appservice.editItemjObj.idx];
-      updt.ItemName = this.form.value.item_name
-      updt.ItemPrice = this.form.value.item_price
-      updt.PassPrice = this.form.value.pass_price  
-      this.appservice.editItemjObj = null
-    } else {
-
-      this.appservice.menu[this.appservice.selectedCatIndex].Items.push(
-        {
-          ItemName: this.form.value.item_name,
-          ItemPrice: this.form.value.item_price,
-          PassPrice: this.form.value.pass_price,
-          img: "https://www.shutterstock.com/shutterstock/photos/313906544/display_1500/stock-photo-tasty-and-appetizing-hamburger-on-a-yellow-background-313906544.jpg",
-        }
-      )    
+    if(this.appservice.editItemObj){
+      let updt = this.appservice.menu[this.appservice.selectedCatIndex].Items[this.appservice.editItemObj.idx];
+      updt.ItemName = this.itemform.value.item_name
+      updt.ItemPrice = this.itemform.value.item_price
+      updt.PassPrice = this.itemform.value.pass_price  
+      this.appservice.editItemObj = null
+    } else {this.appservice.menu[this.appservice.selectedCatIndex].Items.push({
+          ItemName: this.itemform.value.item_name,
+          ItemPrice: this.itemform.value.item_price,
+          PassPrice: this.itemform.value.pass_price,
+          img: "http://localhost:4200/assets/img/temp.jpg",
+        })    
     }
 
-    this.submitted = false;
+    this.itemSubmitted = false;
     this.dialogRef.close();
-    
+    // console.log(JSON.stringify(this.form.value, null, 2));
+  }
 
-    console.log(JSON.stringify(this.form.value, null, 2));
+  onCat(): void {
+    this.catSubmitted = true;
+    
+    if (this.catform.invalid) {
+      return;
+    }
+
+    if(this.appservice.editCatObj){
+      this.appservice.editCatObj.Category = this.catform.value.cat_name
+      this.appservice.editCatObj = null
+    } else { 
+      this.appservice.menu.push({
+      Category: this.catform.value.cat_name,
+        })    
+    }
+
+    this.catSubmitted = false;
+    this.dialogRef.close();
   }
 
   onReset(): void {
-    console.info("easdf")
-    this.submitted = false;
-    this.form.reset();
-    this.appservice.editItemjObj = null
+    // this.itemSubmitted = false;
+    // this.itemform.reset();
+    // this.appservice.editItemObj = null
   }
   onNoClick(): void {
     this.dialogRef.close();
-    this.form.reset();
-    this.appservice.editItemjObj = null
+    // this.itemform.reset();
+    // this.appservice.editItemObj = null
   }
 }
 
