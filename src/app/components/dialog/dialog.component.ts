@@ -10,8 +10,12 @@ import {
 } from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+
+
+
 
 // export interface DialogData {
 export interface DialogData {
@@ -26,13 +30,21 @@ export interface DialogData {
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.css',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatSelectModule],
 })
 export class DialogOverviewExample {
    
   myFunc(){}
   cclass = ''
   addbtns = ''
+
+  foods:any = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'},
+  ];
+  
+
   constructor(public dialog: MatDialog) {}
 
   public openDialog(): void {
@@ -55,6 +67,7 @@ export class DialogOverviewExample {
     MatDialogContent,
     MatDialogActions,
     MatDialogClose,
+    MatSelectModule
   ],
 })
 export class DialogOverviewExampleDialog {
@@ -79,3 +92,5 @@ export class DialogOverviewExampleDialog {
     this.dialogRef.close();
   }
 }
+
+

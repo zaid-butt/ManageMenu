@@ -29,6 +29,10 @@ export class CategorysComponent {
 
   dlg = this.odlg;
 
+  cclass = "add_item"
+  addbtns = "add_item"
+
+
   menu:any = [
     {
       Id: '1',
@@ -36,20 +40,20 @@ export class CategorysComponent {
       Items: [
         {
         ItemName: "Cheese Burger",
-        ItemPrice: "200",
-        PassPrice: "123",
+        ItemPrice: 200,
+        PassPrice: 123,
         img: "https://www.shutterstock.com/shutterstock/photos/313906544/display_1500/stock-photo-tasty-and-appetizing-hamburger-on-a-yellow-background-313906544.jpg",
       },
       {
         ItemName: "Chicken burger",
-        ItemPrice: "250",
-        PassPrice: "100",
+        ItemPrice: 250,
+        PassPrice: 100,
         img: "https://www.shutterstock.com/shutterstock/photos/154462136/display_1500/stock-photo-fast-food-with-big-tasty-traditional-double-cheeseburger-or-hamburger-154462136.jpg",
       },
       {
         ItemName: "Veggie burger",
-        ItemPrice: "150",
-        PassPrice: "50",
+        ItemPrice: 150,
+        PassPrice: 50,
         img: "https://www.shutterstock.com/shutterstock/photos/81497311/display_1500/stock-photo-double-cheeseburger-with-tomatoes-and-lettuce-on-blue-background-81497311.jpg",
       },]
     },
@@ -59,32 +63,32 @@ export class CategorysComponent {
       Items: [
         {
           ItemName: "Cheese Pizza ",
-          ItemPrice: "100",
-          PassPrice: "50",
+          ItemPrice: 100,
+          PassPrice: 50,
           img: "https://www.shutterstock.com/shutterstock/photos/1514037083/display_1500/stock-photo-pizza-margherita-on-black-stone-background-top-view-pizza-margarita-with-tomatoes-basil-and-1514037083.jpg",
         },
         {
           ItemName: "Pepperoni Pizza ",
-          ItemPrice: "200",
-          PassPrice: "100",
+          ItemPrice: 200,
+          PassPrice: 100,
           img: "https://www.shutterstock.com/shutterstock/photos/1514037083/display_1500/stock-photo-pizza-margherita-on-black-stone-background-top-view-pizza-margarita-with-tomatoes-basil-and-1514037083.jpg",
         },
         {
         ItemName: "Meat Pizza ",
-        ItemPrice: "300",
-        PassPrice: "100",
+        ItemPrice: 300,
+        PassPrice: 100,
         img: "https://www.shutterstock.com/shutterstock/photos/1514037083/display_1500/stock-photo-pizza-margherita-on-black-stone-background-top-view-pizza-margarita-with-tomatoes-basil-and-1514037083.jpg",
       },
       {
         ItemName: "BBQ Chicken Pizza ",
-        ItemPrice: "125",
-        PassPrice: "75",
+        ItemPrice: 125,
+        PassPrice: 75,
         img: "https://www.shutterstock.com/shutterstock/photos/1514037083/display_1500/stock-photo-pizza-margherita-on-black-stone-background-top-view-pizza-margarita-with-tomatoes-basil-and-1514037083.jpg",
       },
       {
         ItemName: "Supreme Pizza ",
-        ItemPrice: "100",
-        PassPrice: "50",
+        ItemPrice: 100,
+        PassPrice: 50,
         img: "https://www.shutterstock.com/shutterstock/photos/1514037083/display_1500/stock-photo-pizza-margherita-on-black-stone-background-top-view-pizza-margarita-with-tomatoes-basil-and-1514037083.jpg",
       },]
     },
@@ -94,20 +98,20 @@ export class CategorysComponent {
       Items: [
       //   {
       //   ItemName: "Baked Raspberry ",
-      //   ItemPrice: "200",
-      //   PassPrice: "100",
+      //   ItemPrice: 200,
+      //   PassPrice: 100,
       //   img: "https://b2cappassetscdn.theentertainerme.com/v7/standard/DXB-Standard-359x404.png",
       // },
       // {
       //   ItemName: "Bavarian Cream ",
-      //   ItemPrice: "200",
-      //   PassPrice: "100",
+      //   ItemPrice: 200,
+      //   PassPrice: 100,
       //   img: "https://b2cappassetscdn.theentertainerme.com/v7/standard/DXB-Standard-359x404.png",
       // },
       // {
       //   ItemName: "Chocolate Donuts ",
-      //   ItemPrice: "200",
-      //   PassPrice: "100",
+      //   ItemPrice: 200,
+      //   PassPrice: 100,
       //   img: "https://b2cappassetscdn.theentertainerme.com/v7/standard/DXB-Standard-359x404.png",
       // },
     ]
