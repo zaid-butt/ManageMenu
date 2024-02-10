@@ -38,7 +38,7 @@
                   </div>
                 </div>
                 <div class="list_action">
-                  <img (click)="dlg.openDialog()" (click)="edititem(catg, Itm)" src="assets/icons/edit.svg">
+                  <img (click)="dlg.openDialog(catg, idx)" (click)="edititem(catg, Itm)" src="assets/icons/edit.svg">
                   <img src="assets/icons/trash.svg">
                 </div>
               </div>
@@ -46,7 +46,7 @@
               
             </div>
             <div class="category-bottom">
-              <button (click)="dlg.openDialog()" mat-flat-button color="primary">Add item</button>
+              <button (click)="dlg.openDialog(catg, idx)" mat-flat-button color="primary">Add item</button>
             </div>
            
           </div>
