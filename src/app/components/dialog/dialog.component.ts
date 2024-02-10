@@ -83,15 +83,6 @@ export class DialogOverviewExampleDialog implements OnInit{
 
   cclass = "selecteditem"
   addbtns = "add_item"
-  // myFunc(){
-  //   if (this.addbtns == "add_item"){
-  //     this.cclass = "add_item"
-  //   }
-  //   else {
-  //     this.cclass = "add_item"
-  //   }
-    
-  // }
   
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,

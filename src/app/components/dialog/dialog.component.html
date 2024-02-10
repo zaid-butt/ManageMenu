@@ -78,19 +78,14 @@
                               </select>
                         </mat-form-field>
                     </div>
-                    <div class="col-12">
-                        <!-- <div class="mb-3">
-                            <label for="formFile" class="form-label">Product image </label>
-                            <input class="form-control" type="file" id="formFile">
-                        </div> -->
-                    </div>
+                    
                 </div>
 
 
             </form>
         </div>
         <div class="zpopup-footer">
-            <a mat-dialog-close (click)="appservice.editItemjObj=null">Close</a>
+            <a mat-dialog-close>Close</a>
             <button *ngIf="!appservice.editItemjObj" mat-flat-button color="primary" (click)="onSubmit()" type="submit">Create item</button>
             <button *ngIf="appservice.editItemjObj" mat-flat-button color="primary" (click)="onSubmit()" type="submit">Update item</button>
         </div>
