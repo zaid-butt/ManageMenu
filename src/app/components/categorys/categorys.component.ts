@@ -119,8 +119,18 @@ export class CategorysComponent {
   constructor(private odlg:DialogOverviewExample){
   }
 
-  edititem (){
-    console.log("edit action");
+  edititem (g_cat:any, g_itm:any){
+    // console.log(g_cat);
+    // console.log(g_itm);
+    // console.log("edit item " + g_itm.ItemName + " and Category " + g_cat.Category )
+    let item_itemname = document.getElementById("item_itemname");
+    item_itemname?.setAttribute("value", g_itm.ItemName);
+
+    let item_Price1 = document.getElementById("item_Price1");
+    item_Price1?.setAttribute("value", g_itm.ItemPrice);
+
+    let item_Price2 = document.getElementById("item_Price2");
+    item_Price2?.setAttribute("value", g_itm.PassPrice);
   }
 
     drop(event: CdkDragDrop<string[]>) {

@@ -17,7 +17,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 
-// export interface DialogData {
+
 export interface DialogData {
   
 }
@@ -30,7 +30,13 @@ export interface DialogData {
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.css',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatSelectModule],
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatSelectModule,
+  ],
 })
 export class DialogOverviewExample {
    

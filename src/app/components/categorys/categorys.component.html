@@ -1,3 +1,4 @@
+
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
 
   <mat-tab label="Overview">
@@ -24,7 +25,7 @@
             [attr.id]="'accordion-body-' + idx" [attr.aria-labelledby]="'accordion-header-' + idx">
 
             <div cdkDropList class="items-wrap" (cdkDropListDropped)="drop2($event, idx)">
-              @for (Itm of catg.Items; track Itm) {
+              @for (Itm of catg.Items; track Itm; let idx = $index) {
               <div class="items-list" cdkDrag>
                 <div class="items-head">
                   <img src="assets/icons/move_items.svg">
@@ -37,21 +38,23 @@
                   </div>
                 </div>
                 <div class="list_action">
-                  <img (click)="edititem()" src="assets/icons/edit.svg">
+                  <img (click)="dlg.openDialog()" (click)="edititem(catg, Itm)" src="assets/icons/edit.svg">
                   <img src="assets/icons/trash.svg">
                 </div>
               </div>
               }
+              
             </div>
             <div class="category-bottom">
               <button (click)="dlg.openDialog()" mat-flat-button color="primary">Add item</button>
             </div>
-            <!-- <app-dialog #dlg></app-dialog> -->
+           
           </div>
         </cdk-accordion-item>
 
 
         }
+        
       </div>
     </cdk-accordion>
   </mat-tab>
