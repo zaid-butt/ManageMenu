@@ -29,9 +29,6 @@ export class CategorysComponent {
 
   dlg = this.odlg;
 
-  cclass = "add_item"
-  addbtns = "add_item"
-
 
   menu:any = [
     {
@@ -120,9 +117,12 @@ export class CategorysComponent {
   ];
   
   constructor(private odlg:DialogOverviewExample){
-
-    
   }
+
+  edititem (){
+    console.log("edit action");
+  }
+
     drop(event: CdkDragDrop<string[]>) {
       console.info("event1")
       console.info(event)
